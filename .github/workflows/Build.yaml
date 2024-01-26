@@ -59,3 +59,32 @@ jobs:
             /home/runner/.gradle/caches/transforms-3/60f5165b5c883e0c741773a3c887e64f/transformed/output/jdkImage/lib/*
 
 
+
+  liberica:
+    strategy:
+      matrix:
+        java: [17.0.6+10, 17.0.5+8, 17.0.4+8, 17.0.3+7, 17.0.2+9,19,20.0.2+10,20.0.1+10 ,21.0.1+12,21.0.2+14]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          distribution: liberica
+          java-version: ${{ matrix.java }}
+      - name: Execute Gradle build
+        run: |
+            ./gradlew clean assembleDebug -Dscan.tag.H${{ matrix.java }}-liberica
+        env:
+          GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GE_API_KEY }}
+          AGENT_JAVA_VERSION: "${{ matrix.java }}-liberica"
+      - name: Upload test reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: liberica-${{ matrix.java }}
+          path: |
+            /home/runner/.gradle/caches/transforms-3/ce8b16410f5bb7e4035b0763ac3925bb/transformed/output/jdkImage/lib/*
+            /home/runner/.gradle/caches/transforms-3/1a2508375073981f50d82e94091c008c/transformed/output/jdkImage/lib/*
+            /home/runner/.gradle/caches/transforms-3/81767170db3f2da71ca4f5ea6a381e33/transformed/output/jdkImage/lib/*
+            /home/runner/.gradle/caches/transforms-3/8dcebbfbf0b5316d7855ce586e2654f1/transformed/output/jdkImage/lib/*
+            /home/runner/.gradle/caches/transforms-3/a02e8e48a19429a1c861c4e8186e0153/transformed/output/jdkImage/lib/*
+            /home/runner/.gradle/caches/transforms-3/b95d1bed050faa15462a0015647f55d1/transformed/output/jdkImage/lib/*
