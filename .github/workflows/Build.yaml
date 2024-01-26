@@ -15,7 +15,7 @@ jobs:
           distribution: temurin
           java-version: ${{ matrix.java }}
       - name: Execute Gradle build
-        run: ./gradlew clean help -Dscan.tag.H${{ matrix.java }}-temurin
+        run: ./gradlew clean assembleDebug -Dscan.tag.H${{ matrix.java }}-temurin
         env:
           GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GE_API_KEY }}
           AGENT_JAVA_VERSION: "${{ matrix.java }}-temurin"
