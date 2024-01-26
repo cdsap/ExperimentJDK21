@@ -15,10 +15,10 @@ jobs:
           distribution: temurin
           java-version: ${{ matrix.java }}
       - name: Execute Gradle build
-        run: ./gradlew clean assembleDebug -Dscan.tag.H${{ matrix.java }}-temurin
+        run: ./gradlew clean help -Dscan.tag.H${{ matrix.java }}-temurin
         env:
           GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GE_API_KEY }}
-          AGENT_JAVA_VERSION: "${{ matrix.java }}-temurin"            
+          AGENT_JAVA_VERSION: "${{ matrix.java }}-temurin"
       - name: Upload test reports
         uses: actions/upload-artifact@v3
         with:
@@ -46,7 +46,7 @@ jobs:
              ./gradlew clean assembleDebug -Dscan.tag.H${{ matrix.java }}-zulu
         env:
           GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GE_API_KEY }}
-          AGENT_JAVA_VERSION: "${{ matrix.java }}-zulu"                    
+          AGENT_JAVA_VERSION: "${{ matrix.java }}-zulu"
       - name: Upload test reports
         uses: actions/upload-artifact@v3
         with:
@@ -76,7 +76,7 @@ jobs:
             ./gradlew clean assembleDebug -Dscan.tag.H${{ matrix.java }}-liberica
         env:
           GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GE_API_KEY }}
-          AGENT_JAVA_VERSION: "${{ matrix.java }}-liberica"          
+          AGENT_JAVA_VERSION: "${{ matrix.java }}-liberica"
       - name: Upload test reports
         uses: actions/upload-artifact@v3
         with:
