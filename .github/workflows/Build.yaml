@@ -6,7 +6,7 @@ jobs:
   temurin:
     strategy:
       matrix:
-        java: [17.0.9+9, 17.0.10+7, 17.0.8+101,19.0.0+36,19.0.1+10,19.0.2+9,20.0.0+36,20.0.1+9,20.0.2+9,21.0.0+35,21.0.1+12,21.0.2+13]
+        java: [17.0.9+9, 17.0.10+7, 17.0.8+101,19.0.0+36,19.0.1+10,19.0.2+7,20.0.0+36,20.0.1+9,20.0.2+9,21.0.0+35,21.0.1+12,21]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -29,4 +29,5 @@ jobs:
             /home/runner/.gradle/caches/transforms-3/99b7153d6bdcdd1a2f468c08fa86fa5a/transformed/output/jdkImage/lib/*
             /home/runner/.gradle/caches/transforms-3/de8d13a4ba0c20cc41ac5193e0e632b7/transformed/output/jdkImage/lib/*
             /home/runner/.gradle/caches/transforms-3/a5b4331f0c86a01033f3bc70de797fea/transformed/output/jdkImage/lib/*
+
 
