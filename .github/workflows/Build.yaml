@@ -29,7 +29,7 @@ jobs:
       strategy:
         matrix:
           variant: ["cdsap/android-builder:0.1","cdsap/android-builder-jemalloc:0.3"]
-          runs:   ${{ fromJson(needs.iterations.outputs.iterations) }}         
+          runs:   ${{ fromJson(needs.iterations.outputs.iterations) }}
       runs-on: ubuntu-latest
       container:
         image: ${{ matrix.variant }}
@@ -43,7 +43,6 @@ jobs:
           run: |
             echo $LD_PRELOAD
             echo $HOME
-           ./gradlew assembleRelease -Dscan.tag.${{ matrix.variant }} -Dscan.tag.experiment
+            ./gradlew assembleRelease -Dscan.tag.${{ matrix.variant }} -Dscan.tag.experiment
           env:
             GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GE_API_KEY }}
-            
