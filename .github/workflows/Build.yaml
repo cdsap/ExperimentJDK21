@@ -28,7 +28,7 @@ jobs:
       needs: [iterations]
       strategy:
         matrix:
-          variant: ["cdsap/android-builder:0.2","cdsap/android-builder-jemalloc:0.3"]
+          variant: ["cdsap/android-builder:0.3","cdsap/android-builder-jemalloc:0.3"]
           runs:   ${{ fromJson(needs.iterations.outputs.iterations) }}
       runs-on: ubuntu-latest
       container:
