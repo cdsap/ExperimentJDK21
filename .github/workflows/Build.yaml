@@ -43,4 +43,7 @@ jobs:
           run: |
             echo $LD_PRELOAD
             echo $HOME
+           ./gradlew assembleRelease -Dscan.tag.${{ matrix.variant }} -Dscan.tag.experiment
+          env:
+            GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GE_API_KEY }}
             
