@@ -10,7 +10,7 @@ jobs:
          - id: calculate_iterations
            run: |
             iterations=" ["
-            for i in {1..100}
+            for i in {1..2}
             do
               if [ $i == 1 ]
               then
@@ -39,10 +39,11 @@ jobs:
           with:
              distribution: temurin
              java-version: 17
+        - uses: catchpoint/workflow-telemetry-action@v1
         - name: Run a command inside the Docker container
           run: |
             echo $LD_PRELOAD
             echo $HOME
-            ./gradlew assembleRelease -Dscan.tag.${{github.run_number}}  -Dscan.tag.${{ matrix.variant }} -Dscan.tag.experiment
+            ./gradlew assembleDebug -Dscan.tag.${{github.run_number}}  -Dscan.tag.${{ matrix.variant }} -Dscan.tag.experiment
           env:
             GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GE_API_KEY }}
