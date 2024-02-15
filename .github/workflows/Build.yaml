@@ -39,7 +39,7 @@ jobs:
           with:
              distribution: temurin
              java-version: 17
-        - uses: catchpoint/workflow-telemetry-action@v1
+        - uses: catchpoint/workflow-telemetry-action@v2.0.0
           with:
               proc_trace_table_show: true
         - name: Run a command inside the Docker container
