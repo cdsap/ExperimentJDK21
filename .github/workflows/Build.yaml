@@ -46,6 +46,6 @@ jobs:
           run: |
             echo $LD_PRELOAD
             echo $HOME
-            ./gradlew testDebug -Dscan.tag.${{github.run_number}}  -Dscan.tag.${{ matrix.variant }} -Dscan.tag.experiment
+            ./gradlew testDebugUnitTest -Dscan.tag.${{github.run_number}}  -Dscan.tag.${{ matrix.variant }} -Dscan.tag.experiment
           env:
             GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GE_API_KEY }}
