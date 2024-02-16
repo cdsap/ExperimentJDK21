@@ -39,13 +39,13 @@ jobs:
           with:
              distribution: temurin
              java-version: 17
-        - uses: catchpoint/workflow-telemetry-action@v2.0.0
+        - uses: catchpoint/workflow-telemetry-action@v1
           with:
               proc_trace_table_show: true
         - name: Run a command inside the Docker container
           run: |
             echo $LD_PRELOAD
             echo $HOME
-            ./gradlew help -Dscan.tag.${{github.run_number}}  -Dscan.tag.${{ matrix.variant }} -Dscan.tag.experiment
+            ./gradlew testDebug -Dscan.tag.${{github.run_number}}  -Dscan.tag.${{ matrix.variant }} -Dscan.tag.experiment
           env:
             GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GE_API_KEY }}
