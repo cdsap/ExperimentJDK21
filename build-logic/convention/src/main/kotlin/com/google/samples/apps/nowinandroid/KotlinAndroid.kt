@@ -39,6 +39,9 @@ internal fun Project.configureKotlinAndroid(
             minSdk = 21
         }
 
+        buildFeatures {
+            dataBinding.enable = true
+        }
         compileOptions {
             // Up to Java 11 APIs are available through desugaring
             // https://developer.android.com/studio/write/java11-minimal-support-table
