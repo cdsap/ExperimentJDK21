@@ -113,7 +113,7 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.testManifest)
     debugImplementation(projects.uiTestHiltManifest)
 
-    kspTest(libs.hilt.compiler)
+    //kspTest(libs.hilt.compiler)
 
     testImplementation(projects.core.dataTest)
     testImplementation(projects.core.testing)
