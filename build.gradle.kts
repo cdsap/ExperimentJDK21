@@ -1,3 +1,8 @@
+import org.gradle.process.internal.ExecException
+import java.io.ByteArrayOutputStream
+import java.nio.charset.Charset
+import kotlin.random.Random
+
 /*
  * Copyright 2021 The Android Open Source Project
  *
@@ -46,8 +51,6 @@ plugins {
     alias(libs.plugins.roborazzi) apply false
     alias(libs.plugins.secrets) apply false
     alias(libs.plugins.room) apply false
-    id("io.github.cdsap.kotlinprocess") version "0.1.5"
-    id("io.github.cdsap.gradleprocess") version "0.1.0"
     id("org.gradle.android.cache-fix") version "3.0.1" apply false
 }
 
