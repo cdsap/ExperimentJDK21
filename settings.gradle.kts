@@ -42,9 +42,11 @@ gradleEnterprise {
 }
 
 buildCache {
-    remote(gradleEnterprise.buildCache) {
-    }
-}
+    remote(HttpBuildCache::class) {
+        // adjust to your Develocity hostname, and note the trailing slash
+        url = uri("https://ge.solutions-team.gradle.com/cache/")
+    }}
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
