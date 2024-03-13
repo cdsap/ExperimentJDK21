@@ -67,7 +67,7 @@ allprojects {
         doLast {
         this@configureEach.options.compilerArgumentProviders.forEach {
             it.asArguments().forEach {
-                valu.value("${this@configureEach.name}","${it}")
+                valu.value("${this@configureEach.path}","${it}")
             }
         }
         }
