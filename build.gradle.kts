@@ -51,11 +51,26 @@ plugins {
     alias(libs.plugins.roborazzi) apply false
     alias(libs.plugins.secrets) apply false
     alias(libs.plugins.room) apply false
-    id("org.gradle.android.cache-fix") version "3.0.1" apply false
+    //id("org.gradle.android.cache-fix") version "3.0.1" apply false
 }
 
-subprojects {
-    plugins.withType<com.android.build.gradle.api.AndroidBasePlugin>() {
-        apply(plugin = "org.gradle.android.cache-fix")
+//subprojects {
+//    plugins.withType<com.android.build.gradle.api.AndroidBasePlugin>() {
+//        apply(plugin = "org.gradle.android.cache-fix")
+//    }
+//}
+
+
+allprojects {
+    val valu = rootProject.buildScan
+    tasks.withType<JavaCompile>().configureEach {
+        doLast {
+        this@configureEach.options.compilerArgumentProviders.forEach {
+            it.asArguments().forEach {
+                valu.value("${this@configureEach.name}","${it}")
+            }
+        }
+        }
     }
+
 }
